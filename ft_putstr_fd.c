@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 11:08:55 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/09 16:14:07 by habenydi         ###   ########.fr       */
+/*   Created: 2024/10/24 19:32:43 by habenydi          #+#    #+#             */
+/*   Updated: 2024/11/14 17:41:44 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "printf.h"
 
-void	*ft_calloc(size_t len, size_t b)
+int	ft_putstr_fd(char *s, int fd)
 {
-	void	*p;
+	int	i;
 
-	if (b && len > SIZE_MAX / b)
-		return (NULL);
-	p = malloc(len * b);
-	if (!p)
-		return (NULL);
-	ft_bzero(p, len * b);
-	return (p);
+	if (!s)
+		return (0);
+	while (s[i])
+		write(fd, s + (i++), 1);
+	return (i);
 }
