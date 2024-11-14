@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habenydi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 19:28:52 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/13 12:06:02 by habenydi         ###   ########.fr       */
+/*   Created: 2024/10/24 11:08:55 by habenydi          #+#    #+#             */
+/*   Updated: 2024/11/09 16:14:07 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	*ft_calloc(size_t len, size_t b)
 {
-	write(fd, &c, 1);
+	void	*p;
+
+	if (b && len > SIZE_MAX / b)
+		return (NULL);
+	p = malloc(len * b);
+	if (!p)
+		return (NULL);
+	ft_bzero(p, len * b);
+	return (p);
 }

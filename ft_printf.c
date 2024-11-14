@@ -6,7 +6,7 @@
 /*   By: habenydi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:58:37 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/13 12:07:40 by habenydi         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:54:59 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,30 @@
 int	ft_printf(const char *f, ...)
 {
 	va_list	list;
-	char	**sp;
+	char	*sp;
 
 	va_start(list, f);
-	sp = ft_split(f, '%');
-	while(sp)
+	sp = (char *)f;
+	while(*sp)
 	{
-		if (ft_strlen(*sp) == 1)
+		if (*sp == '%')
 		{
-			if (*sp == 's')
+			if (*++sp == 's')
 				ft_putstr_fd(va_arg(list, char *), 1);
-			if (*sp == 'd' || *sp == 'i')
+			if (*++sp == 'd' || *++sp == 'i')
 				ft_putnbr_fd(va_arg(list, int), 1);
-			if (*sp == 'c')
-				ft_putchar_fd(va_arg(list, char), 1);
-			if (*sp == '%')
+			if (*++sp == 'c')
+				ft_putchar_fd(va_arg(list, int), 1);
+			if (*++sp == '%')
 				ft_putchar_fd('%', 1);
-			if (*sp == 'x' || *sp == 'X')
+			if (*++sp == 'x' || *++sp == 'X')
 				ft_puthexa(va_arg(list, long), *sp);
-			if (*sp == 'p')
+			if (*++sp == 'p')
 				ft_puthexa(&(va_arg(list, int)), 'x');
-			if (*sp == 'u')
+			if (*++sp == 'u')
 				ft_putunbr(va_arg(list, unsigned int));
 		}
-		ft_putstr_fd(*sp, 1);
+		ft_putchar_fd(*sp, 1);
 		sp++;
 	}
 	va_end(list);
