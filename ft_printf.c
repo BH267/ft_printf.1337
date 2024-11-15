@@ -6,7 +6,7 @@
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:58:37 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/15 10:06:51 by habenydi         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:31:52 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	ft_format(char sp, va_list list)
 	if (sp == '%')
 		cont = ft_putchar('%');
 	if (sp == 'x' || sp == 'X')
-		cont = ft_puthexa(va_arg(list, long), sp);
+		cont = ft_puthexa(va_arg(list, unsigned int), sp);
 	if (sp == 'p')
 	{
 		cont = ft_putstr("0x");
-		cont += ft_puthexa((va_arg(list, int)), 'x');
+		cont += ft_puthexa((va_arg(list, unsigned long)), 'x');
 	}
 	if (sp == 'u')
 		cont = ft_putunbr(va_arg(list, unsigned int));

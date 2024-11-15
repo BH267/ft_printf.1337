@@ -6,13 +6,13 @@
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 19:36:25 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/15 10:04:39 by habenydi         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:32:19 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthexa(long n, char x)
+int	ft_puthexa(unsigned long n, char x)
 {
 	char	*lwbase;
 	char	*upbase;
@@ -21,11 +21,6 @@ int	ft_puthexa(long n, char x)
 	cont = 0;
 	lwbase = "0123456789abcdef";
 	upbase = "0123456789ABCDEF";
-	if (n < 0)
-	{
-		cont += ft_putchar('-');
-		n *= -1;
-	}
 	if (n < 16)
 	{
 		if (x == 'x')
