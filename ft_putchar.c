@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 19:32:43 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/14 17:41:44 by habenydi         ###   ########.fr       */
+/*   Created: 2024/10/24 19:28:52 by habenydi          #+#    #+#             */
+/*   Updated: 2024/11/15 09:59:41 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int	ft_putstr_fd(char *s, int fd)
+int	ft_putchar(char c)
 {
-	int	i;
-
-	if (!s)
-		return (0);
-	while (s[i])
-		write(fd, s + (i++), 1);
-	return (i);
+	write(1, &c, 1);
+	return (1);
 }

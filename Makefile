@@ -1,7 +1,7 @@
 
 NAME = libftprintf.a
 
-SRC = ft_putchar_fd.c ft_putstr_fd.c ft_printf.c ft_putnbr_fd.c ft_putuh.c
+SRC = ft_putchar.c ft_putstr.c ft_printf.c ft_putnbr.c ft_putuh.c
 OBJ = $(SRC:.c=.o)
 
 CC = cc

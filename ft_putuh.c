@@ -6,11 +6,11 @@
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 19:36:25 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/14 17:46:52 by habenydi         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:04:39 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_puthexa(long n, char x)
 {
@@ -23,15 +23,15 @@ int	ft_puthexa(long n, char x)
 	upbase = "0123456789ABCDEF";
 	if (n < 0)
 	{
-		cont += ft_putchar_fd('-', 1);
+		cont += ft_putchar('-');
 		n *= -1;
 	}
 	if (n < 16)
 	{
 		if (x == 'x')
-			cont += ft_putchar_fd(*(n + lwbase), 1);
+			cont += ft_putchar(*(n + lwbase));
 		if (x == 'X')
-			cont += ft_putchar_fd(*(n + upbase), 1);
+			cont += ft_putchar(*(n + upbase));
 	}
 	if (n >= 16)
 	{
@@ -47,7 +47,7 @@ int	ft_putunbr(unsigned int n)
 
 	cont = 0;
 	if (n < 10)
-		cont += ft_putchar_fd('0' + n, 1);
+		cont += ft_putchar('0' + n);
 	else
 	{
 		cont += ft_putunbr(n / 10);

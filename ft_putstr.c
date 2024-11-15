@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 19:36:25 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/14 17:47:49 by habenydi         ###   ########.fr       */
+/*   Created: 2024/10/24 19:32:43 by habenydi          #+#    #+#             */
+/*   Updated: 2024/11/15 09:57:37 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_putstr(char *s)
 {
-	int	cont;
+	int	i;
 
-	cont = 0;
-	if (n == -2147483648)
+	i = 0;
+	if (s == NULL)
 	{
-		write(fd, "-2147483648", 11);
-		return (11);
+		write(1, "(null)", 6);
+		return (6);
 	}
-	if (n < 0)
-	{
-		n *= -1;
-		cont += ft_putchar_fd('-', fd);
-	}
-	if (n < 10)
-		cont += ft_putchar_fd('0' + n, fd);
-	else
-	{
-		cont += ft_putnbr_fd(n / 10, fd);
-		cont += ft_putnbr_fd(n % 10, fd);
-	}
-	return (cont);
+	while (s[i])
+		write(1, s + (i++), 1);
+	return (i);
 }

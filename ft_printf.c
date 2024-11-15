@@ -6,11 +6,11 @@
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:58:37 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/14 17:34:56 by habenydi         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:06:51 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_format(char sp, va_list list)
 {
@@ -18,19 +18,19 @@ int	ft_format(char sp, va_list list)
 
 	cont = 0;
 	if (sp == 's')
-		cont = ft_putstr_fd(va_arg(list, char *), 1);
+		cont = ft_putstr(va_arg(list, char *));
 	if (sp == 'd' || sp == 'i')
-		cont = ft_putnbr_fd(va_arg(list, int), 1);
+		cont = ft_putnbr(va_arg(list, int));
 	if (sp == 'c')
-		cont = ft_putchar_fd(va_arg(list, int), 1);
+		cont = ft_putchar(va_arg(list, int));
 	if (sp == '%')
-		cont = ft_putchar_fd('%', 1);
+		cont = ft_putchar('%');
 	if (sp == 'x' || sp == 'X')
 		cont = ft_puthexa(va_arg(list, long), sp);
 	if (sp == 'p')
 	{
-		ft_putstr_fd("0x", 1);
-		cont = 2 + ft_puthexa((va_arg(list, int)), 'x');
+		cont = ft_putstr("0x");
+		cont += ft_puthexa((va_arg(list, int)), 'x');
 	}
 	if (sp == 'u')
 		cont = ft_putunbr(va_arg(list, unsigned int));
@@ -51,7 +51,7 @@ int	ft_printf(const char *f, ...)
 		if (*sp == '%')
 			cont += ft_format(*(++sp), list);
 		else
-			cont += ft_putchar_fd(*sp, 1);
+			cont += ft_putchar(*sp);
 		sp++;
 	}
 	va_end(list);
