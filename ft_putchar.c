@@ -6,7 +6,7 @@
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 19:28:52 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/15 09:59:41 by habenydi         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:53:45 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }

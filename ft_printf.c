@@ -6,7 +6,7 @@
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:58:37 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/15 15:31:52 by habenydi         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:07:55 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_printf(const char *f, ...)
 	char	*sp;
 	int		cont;
 
+	if (!f || write(1, 0, 0) == -1)
+		return (-1);
 	va_start(list, f);
 	cont = 0;
 	sp = (char *) f;
