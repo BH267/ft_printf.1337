@@ -6,7 +6,7 @@
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:58:37 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/15 17:07:55 by habenydi         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:43:51 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,11 @@ int	ft_printf(const char *f, ...)
 	while (*sp)
 	{
 		if (*sp == '%')
+		{
+			if (*(sp + 1) == '\0')
+				return (cont);
 			cont += ft_format(*(++sp), list);
+		}
 		else
 			cont += ft_putchar(*sp);
 		sp++;
