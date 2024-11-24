@@ -6,7 +6,7 @@
 /*   By: habenydi <habenydi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:58:37 by habenydi          #+#    #+#             */
-/*   Updated: 2024/11/18 10:43:51 by habenydi         ###   ########.fr       */
+/*   Updated: 2024/11/24 10:00:31 by habenydi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,23 @@ int	ft_format(char sp, va_list list)
 	cont = 0;
 	if (sp == 's')
 		cont = ft_putstr(va_arg(list, char *));
-	if (sp == 'd' || sp == 'i')
+	else if (sp == 'd' || sp == 'i')
 		cont = ft_putnbr(va_arg(list, int));
-	if (sp == 'c')
+	else if (sp == 'c')
 		cont = ft_putchar(va_arg(list, int));
-	if (sp == '%')
+	else if (sp == '%')
 		cont = ft_putchar('%');
-	if (sp == 'x' || sp == 'X')
+	else if (sp == 'x' || sp == 'X')
 		cont = ft_puthexa(va_arg(list, unsigned int), sp);
-	if (sp == 'p')
+	else if (sp == 'p')
 	{
 		cont = ft_putstr("0x");
 		cont += ft_puthexa((va_arg(list, unsigned long)), 'x');
 	}
-	if (sp == 'u')
+	else if (sp == 'u')
 		cont = ft_putunbr(va_arg(list, unsigned int));
+	else
+		cont += ft_putchar(sp);
 	return (cont);
 }
 
@@ -63,3 +65,10 @@ int	ft_printf(const char *f, ...)
 	va_end(list);
 	return (cont);
 }
+/*
+int main ()
+{
+	int l = ft_printf("%\n");
+	int len2 = printf("%\n");
+	printf("%i,  %i", l, len2);
+}*/
